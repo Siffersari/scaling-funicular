@@ -1,6 +1,8 @@
 <script setup>
 const route = useRoute();
 
+const { totTitleCase } = useUtilities();
+
 useHead({
   title: `${
     route.params.make ? totTitleCase(route.params.make) : "Cars"
@@ -11,14 +13,6 @@ useHead({
 definePageMeta({
   layout: "custom",
 });
-
-function totTitleCase(str) {
-  return str
-    .toLowerCase()
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
 </script>
 
 <template>
