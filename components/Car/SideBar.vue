@@ -13,14 +13,14 @@ const updateModal = (key) => {
 };
 
 const onChangeLocation = () => {
-  if (!isNan(parseInt(city.value))) {
+  if (!city.value) return;
+  if (!isNaN(parseInt(city.value))) {
     throw createError({
       statusCode: 400,
-      message: ` ${route.params.city} is not a valid city name`,
+      message: `Invalid City name`,
     });
   }
   updateModal("location");
-  if (!city.value) return;
   navigateTo(`/city/${city.value}/car/${route.params.make}`);
   city.value = "";
 };
